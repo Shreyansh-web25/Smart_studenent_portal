@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusHub | Student Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-icon">C</span><span>CampusHub</span></div>
+    <p class="nav-label">MENU</p>
+    <a class="nav-item active" href="#"><span>▦</span> Dashboard</a>
+    <a class="nav-item" href="#students"><span>♙</span> Students</a>
+    <div class="sidebar-bottom"><div class="avatar">AD</div><div><strong>Administrator</strong><small>Portal Manager</small></div></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div><p class="eyebrow">OVERVIEW</p><h1>Dashboard</h1></div>
+      <div class="top-right"><span class="status-dot"></span><span>System online</span><div class="avatar small">AD</div></div>
+    </header>
+
+    <section class="welcome">
+      <div><p class="eyebrow light">CAMPUS MANAGEMENT</p><h2>Welcome back, Admin 👋</h2><p>Here’s what’s happening with your students today.</p></div>
+      <div class="welcome-mark">✦</div>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card"><div class="stat-icon purple">♙</div><p>Total Students</p><strong id="totalCount">0</strong><small>Registered students</small></article>
+      <article class="stat-card"><div class="stat-icon green">▤</div><p>Courses</p><strong id="courseCount">0</strong><small>Unique courses</small></article>
+      <article class="stat-card"><div class="stat-icon orange">◷</div><p>Average Attendance</p><strong id="avgAttendance">0%</strong><small>Across all students</small></article>
+    </section>
+
+    <section class="panel" id="students">
+      <div class="panel-head"><div><h2>Student Directory</h2><p>Manage student records in one place.</p></div><button class="primary-btn" id="addBtn">＋ Add Student</button></div>
+      <div class="toolbar"><label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Search by name, roll number, course..."></label><button class="refresh-btn" id="refreshBtn">↻ Refresh</button></div>
+      <div class="table-wrap">
+        <table><thead><tr><th>STUDENT</th><th>ROLL NUMBER</th><th>COURSE</th><th>YEAR</th><th>ATTENDANCE</th><th>ACTIONS</th></tr></thead><tbody id="studentRows"><tr><td colspan="6" class="empty">Loading student records...</td></tr></tbody></table>
+      </div>
+      <p class="table-note" id="tableNote">Showing student records</p>
+    </section>
+    <footer>CampusHub Student Portal <span>•</span> Built with Node.js, Express & MongoDB</footer>
+  </main>
+
+  <div class="modal-backdrop" id="modal">
+    <form class="modal" id="studentForm">
+      <div class="modal-head"><div><p class="eyebrow">STUDENT RECORD</p><h2 id="modalTitle">Add Student</h2></div><button type="button" class="close-btn" id="closeBtn">×</button></div>
+      <input type="hidden" id="studentId">
+      <div class="form-grid">
+        <label>Full name<input id="name" required placeholder="e.g. Aman Sharma"></label>
+        <label>Email address<input id="email" type="email" required placeholder="student@example.com"></label>
+        <label>Roll number<input id="rollNo" required placeholder="e.g. IT2026001"></label>
+        <label>Course<input id="course" required placeholder="e.g. B.Tech IT"></label>
+        <label>Academic year<select id="year" required><option value="">Select year</option><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option></select></label>
+        <label>Attendance (%)<input id="attendance" type="number" min="0" max="100" value="0" required></label>
+      </div>
+      <p class="form-error" id="formError"></p>
+      <div class="modal-actions"><button type="button" class="secondary-btn" id="cancelBtn">Cancel</button><button class="primary-btn" type="submit">Save Student</button></div>
+    </form>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
